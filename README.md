@@ -22,18 +22,18 @@ This is a simple application for generating random passwords, created using the 
 - Generated password can directly be edited
 - Option to copy generated password to the clipboard
 - Settings to:
-  - exclude characters from generation
-  - switch between light and dark mode
-  - limited UI scaling
-  - save settings for next app launch
+  - Exclude characters from generation
+  - Switch between light and dark mode
+  - Limited UI scaling
+  - Save settings for next app launch
 
 ![](rpg_screenshot.png)
 
 > [!NOTE]
-> To prevent user errors, the generated password is displayed in a font ("_consolas_") chosen to distinguish between characters that could otherwise easily be confused with each other, such as the lowercase 'l', the uppercase 'I', and the number '1', or the letter 'O' and the number '0'.
+> To minimise the risk of user errors, the generated password is displayed in a font ("_consolas_") that has been specifically chosen to better differentiate between characters that could otherwise easily be confused with each other, such as the lowercase 'L', the uppercase 'I', and the number '1'; or the letter 'O' and the number '0'.
 
 > [!IMPORTANT]
-> Some of the generated passwords may contain special characters that could be prohibited by certain password policies and, in such cases, should simply be excluded from the generation process using the appropriate field.
+> Please note that some of the generated passwords may contain special characters that could be prohibited by certain password policies. In such cases, these should simply be excluded from the generation process using the appropriate field.
 
 ## Installation
 
@@ -68,3 +68,4 @@ There is no guarantee that this application generates actually strong passwords.
 That said, for those interested, see here as a starting point for password strength: https://www.explainxkcd.com/wiki/index.php/936:_Password_Strength
 
 [^1]: Python Software Foundation. 3.14.0 Documentation » The Python Standard Library » Cryptographic Services » secrets — Generate secure random numbers for managing secrets. https://docs.python.org/3/library/secrets.html#module-secrets. Last accessed 2025-10-10.
+
