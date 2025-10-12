@@ -7,15 +7,20 @@
 
 ## Overview
 
-This is a simple random password generator application built using the `Tkinter` and `CustomTkinter` libraries in Python. The main aim was to learn how to create graphical user interfaces (GUIs), while also producing something useful.
+This is a simple application for generating random passwords, created using the `CustomTkinter` library in Python. The main aim was to learn how to create graphical user interfaces (GUIs), while developing something potentially useful.
 
 > [!NOTE]
 > This Python app uses the **`secrets`** module to generate random numbers more securely than the `random` module's pseudo-random number generator, which is designed for modelling and simulation rather than security or cryptography [^1].
 
 ## Features
 
-- Adjust desired password length, number of special characters, uppercase letters and digits
-- Option to copy generated password directly to the clipboard
+- Adjust desired number of special characters, lowercase letters, uppercase letters and digits
+- Option to:
+  - Generate password with current slider values
+  - Randomize sliders within current password length
+  - Randomize sliders and password length
+- Generated password can directly be edited
+- Option to copy generated password to the clipboard
 - Settings to:
   - exclude characters from generation
   - switch between light and dark mode
@@ -28,7 +33,7 @@ This is a simple random password generator application built using the `Tkinter`
 > To prevent user errors, the generated password is displayed in a font ("_consolas_") chosen to distinguish between characters that could otherwise easily be confused with each other, such as the lowercase 'l', the uppercase 'I', and the number '1', or the letter 'O' and the number '0'.
 
 > [!IMPORTANT]
-> Some of the generated passwords may contain special characters that could be prohibited by certain password policies.
+> Some of the generated passwords may contain special characters that could be prohibited by certain password policies and, in such cases, should simply be excluded from the generation process using the appropriate field.
 
 ## Installation
 
@@ -39,21 +44,10 @@ This is a simple random password generator application built using the `Tkinter`
 5. Run `pip install -r /path/to/requirements.txt` to install required dependencies
 6. Execute the main script using `python main.py`
 
-## Known Issues
-
-> [!WARNING]
-> The time required to generate a password increases significantly when the password becomes longer, without the number of special characters, capital letters and/or numbers being adjusted accordingly.
-
-## Future Plans
-
-- Link password length directly to the slider values
-- Possibly rework password generation to improve performance
-- Possibly revise password generation to ensure that no characters are repeated and that generated passwords do not start or end with numbers for increased security
-
 ## Acknowledgments
 
 - [`TomSchimansky`](https://github.com/TomSchimansky) for creating [CustomTkinter](https://github.com/tomschimansky/customtkinter)
-- [`Akascape`](https://github.com/Akascape) for creating the [CTkMenuBar](https://github.com/Akascape/CTkMenuBar) and [CTkMessagebox](https://github.com/Akascape/CTkMessagebox) extensions
+- [`Akascape`](https://github.com/Akascape) for creating the [CTkMenuBar](https://github.com/Akascape/CTkMenuBar), [CTkMessagebox](https://github.com/Akascape/CTkMessagebox) and [CTkToolTip](https://github.com/Akascape/CTkToolTip) extensions
 
 ## License
 
@@ -68,4 +62,9 @@ This license means:
   the source code.
 - The software is provided “as is”, without warranty of any kind.
 
-[^1]: Python Software Foundation. 3.14.0 Documentation » The Python Standard Library » Cryptographic Services » secrets — Generate secure random numbers for managing secrets. https://docs.python.org/3/library/secrets.html#module-secrets. Last accessed 2025-10-09.
+## Disclaimer
+There is no guarantee that this application generates actually strong passwords. Use at your own risk.
+
+That said, for those interested, see here as a starting point for password strength: https://www.explainxkcd.com/wiki/index.php/936:_Password_Strength
+
+[^1]: Python Software Foundation. 3.14.0 Documentation » The Python Standard Library » Cryptographic Services » secrets — Generate secure random numbers for managing secrets. https://docs.python.org/3/library/secrets.html#module-secrets. Last accessed 2025-10-10.
