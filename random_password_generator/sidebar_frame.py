@@ -2,6 +2,12 @@ import customtkinter as ctk
 import os
 import json
 
+# Get the directory path for the file currently being executed
+# to make it independent from current working directory and
+# ensure the settings.json file being created in the same
+# folder as all the other scripts
+MAIN_DIR = os.path.dirname(os.path.realpath(__file__))
+
 
 class SettingsManager:
     def __init__(self):
@@ -9,12 +15,12 @@ class SettingsManager:
 
     def save_settings(self):
         if self.settings:
-            with open("settings.json", "w") as f:
+            with open(MAIN_DIR + "/settings.json", "w") as f:
                 json.dump(self.settings, f)
 
     def load_settings(self):
-        if not os.path.isfile("settings.json"):
-            with open("settings.json", "w") as f:
+        if not os.path.isfile(MAIN_DIR + "/settings.json"):
+            with open(MAIN_DIR + "/settings.json", "w") as f:
                 json.dump(
                     {
                         "exclude_chars": "",
@@ -24,7 +30,7 @@ class SettingsManager:
                     f,
                 )
 
-        with open("settings.json", "r") as f:
+        with open(MAIN_DIR + "/settings.json", "r") as f:
             self.settings = json.load(f)
 
 
@@ -58,6 +64,7 @@ class SidebarFrame(ctk.CTkFrame):
             self,
             values=["Light", "Dark", "System"],
             command=self.change_appearance_mode_event,
+            anchor="center",
         )
         self.appearance_mode_optionmenu.grid(row=4, column=0, padx=20)
 
@@ -67,13 +74,14 @@ class SidebarFrame(ctk.CTkFrame):
             self,
             values=["80%", "90%", "100%", "110%", "120%"],
             command=self.change_scaling_event,
+            anchor="center",
         )
         self.scaling_optionmenu.grid(row=6, column=0, padx=20)
 
         self.save_settings_button = ctk.CTkButton(
             self,
             text="Save Settings",
-            anchor="w",
+            anchor="center",
             command=self.save_settings_event,
         )
         self.save_settings_button.grid(row=8, column=0, padx=20, pady=(10, 20))
@@ -100,22 +108,28 @@ class SidebarFrame(ctk.CTkFrame):
         scaling = int(config.settings["scaling"].replace("%", "")) / 100
         ctk.set_widget_scaling(scaling)
 
+    """
+    ----------------------------------------
+    Function definitions
+    ----------------------------------------
+    """
+
     # Taken from: https://github.com/TomSchimansky/CustomTkinter/blob/master/examples/complex_example.py
     def change_appearance_mode_event(self, new_appearance_mode: str):
         ctk.set_appearance_mode(new_appearance_mode)
 
-    # Taken from: https://github.com/TomSchimansky/CustomTkinter/blob/master/examples/complex_example.py
+    # Initial function taken from: https://github.com/TomSchimansky/CustomTkinter/blob/master/examples/complex_example.py
     def change_scaling_event(self, new_scaling: str):
         if new_scaling == "80%":
-            self.geometry("900x432")
+            self.geometry("934x485")
         elif new_scaling == "90%":
-            self.geometry("1016x508")
+            self.geometry("1026x540")
         elif new_scaling == "100%":
-            self.geometry("1140x520")
+            self.geometry("1146x598")
         elif new_scaling == "110%":
-            self.geometry("1238x612")
+            self.geometry("1256x654")
         elif new_scaling == "120%":
-            self.geometry("1344x672")
+            self.geometry("1372x714")
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         ctk.set_widget_scaling(new_scaling_float)
 

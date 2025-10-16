@@ -7,13 +7,19 @@
 
 ## Overview
 
-This is a simple application for generating random passwords, created using the `CustomTkinter` library in Python. The main aim was to learn how to create graphical user interfaces (GUIs), while developing something potentially useful.
+This is a simple application for generating random passwords or XKCD-style passphrases, created using the `CustomTkinter` library in Python. The main aim was to learn how to create graphical user interfaces (GUIs), while developing something potentially useful.
 
 > [!NOTE]
 > This Python app uses the **`secrets`** module to generate random numbers more securely than the `random` module's pseudo-random number generator, which is designed for modelling and simulation rather than security or cryptography [^1].
 
 ## Features
+- Settings to:
+  - Exclude characters from generation
+  - Switch between light and dark mode
+  - Limited UI scaling
+  - Save settings for next app launch
 
+### Random Passwords
 - Adjust desired number of special characters, lowercase letters, uppercase letters and digits
 - Option to:
   - Generate password with current slider values
@@ -21,19 +27,22 @@ This is a simple application for generating random passwords, created using the 
   - Randomize sliders and password length
 - Generated password can directly be edited
 - Option to copy generated password to the clipboard
-- Settings to:
-  - Exclude characters from generation
-  - Switch between light and dark mode
-  - Limited UI scaling
-  - Save settings for next app launch
 
-![](rpg_screenshot.png)
+![](rpg_screenshot_pwd.png)
+
+### XKCD-style Passphrases
+- Selection of the wordlist used
+- Adjust desired number of words
+- Selection of separators between words (*Whitespace*, *No Separator*, *Symbols*, *Digits*, *Symbols + Digits*)
+- Option to copy generated password to the clipboard
+
+![](rpg_screenshot_pphr.png)
 
 > [!NOTE]
-> To minimise the risk of user errors, the generated password is displayed in a font ("_consolas_") that has been specifically chosen to better differentiate between characters that could otherwise easily be confused with each other, such as the lowercase 'L', the uppercase 'I', and the number '1'; or the letter 'O' and the number '0'.
+> To minimise the risk of user errors, the generated password and passphrase is displayed in a font ("_consolas_") that has been specifically chosen to better differentiate between characters that could otherwise easily be confused with each other, such as the lowercase 'L', the uppercase 'I', and the number '1'; or the letter 'O' and the number '0'.
 
 > [!IMPORTANT]
-> Please note that some of the generated passwords may contain special characters that could be prohibited by certain password policies. In such cases, these should simply be excluded from the generation process using the appropriate field.
+> Please note that some of the generated passwords and passphrases may contain special characters that could be prohibited by certain password policies. In such cases, these should simply be excluded from the generation process using the appropriate field.
 
 ## Installation
 
@@ -48,6 +57,7 @@ This is a simple application for generating random passwords, created using the 
 
 - [`TomSchimansky`](https://github.com/TomSchimansky) for creating [CustomTkinter](https://github.com/tomschimansky/customtkinter)
 - [`Akascape`](https://github.com/Akascape) for creating the [CTkMenuBar](https://github.com/Akascape/CTkMenuBar), [CTkMessagebox](https://github.com/Akascape/CTkMessagebox) and [CTkToolTip](https://github.com/Akascape/CTkToolTip) extensions
+- [`MichaelWehar`](https://github.com/MichaelWehar) for compiling the list of [5000 common words](https://github.com/MichaelWehar/Public-Domain-Word-Lists/blob/master/5000-more-common.txt) (the default list used here) and releasing it into the public domain
 
 ## License
 
@@ -63,9 +73,9 @@ This license means:
 - The software is provided “as is”, without warranty of any kind.
 
 ## Disclaimer
-There is no guarantee that this application generates actually strong passwords. Use at your own risk.
+There is no guarantee that this application generates actually strong passwords or passphrases. Use at your own risk.
 
-That said, for those interested, see here as a starting point for password strength: https://www.explainxkcd.com/wiki/index.php/936:_Password_Strength
+That said, for those interested in password strength, see here for a starting point:
+https://www.explainxkcd.com/wiki/index.php/936:_Password_Strength
 
 [^1]: Python Software Foundation. 3.14.0 Documentation » The Python Standard Library » Cryptographic Services » secrets — Generate secure random numbers for managing secrets. https://docs.python.org/3/library/secrets.html#module-secrets. Last accessed 2025-10-10.
-
